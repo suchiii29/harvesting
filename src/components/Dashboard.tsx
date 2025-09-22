@@ -11,13 +11,16 @@ import {
   AlertTriangle,
   Clock
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
+  
   const statsData = [
-    { title: "Total Livestock", value: "1,247", change: "+12%", icon: TrendingUp, trend: "up" as const },
-    { title: "Active Monitoring", value: "1,198", change: "+5%", icon: Activity, trend: "up" as const },
-    { title: "QR Codes Generated", value: "2,847", change: "+8%", icon: QrCode, trend: "up" as const },
-    { title: "Compliance Reports", value: "156", change: "+15%", icon: FileText, trend: "up" as const },
+    { title: t('totalLivestock'), value: "1,247", change: "+12%", icon: TrendingUp, trend: "up" as const },
+    { title: t('activeMonitoring'), value: "1,198", change: "+5%", icon: Activity, trend: "up" as const },
+    { title: t('qrCodesGenerated'), value: "2,847", change: "+8%", icon: QrCode, trend: "up" as const },
+    { title: t('complianceReports'), value: "156", change: "+15%", icon: FileText, trend: "up" as const },
   ];
 
   const alerts = [
@@ -32,11 +35,11 @@ const Dashboard = () => {
         {/* Dashboard Header */}
         <div className="flex justify-between items-start mb-12">
           <div>
-            <h2 className="text-3xl font-bold text-foreground mb-2">Farm Dashboard</h2>
-            <p className="text-muted-foreground">Welcome back! Here's your farm overview.</p>
+            <h2 className="text-3xl font-bold text-foreground mb-2">{t('farmDashboard')}</h2>
+            <p className="text-muted-foreground">{t('welcomeBack')}</p>
           </div>
           <Button className="bg-primary hover:bg-primary/90">
-            Generate Report
+            {t('generateReport')}
           </Button>
         </div>
 
@@ -53,7 +56,7 @@ const Dashboard = () => {
             <CardHeader className="pb-4">
               <div className="flex items-center space-x-2">
                 <AlertTriangle className="w-5 h-5 text-destructive" />
-                <CardTitle className="text-lg">Active Alerts</CardTitle>
+                <CardTitle className="text-lg">{t('activeAlerts')}</CardTitle>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -77,13 +80,13 @@ const Dashboard = () => {
           {/* MRL/AMU Monitoring */}
           <Card className="lg:col-span-2 shadow-card">
             <CardHeader>
-              <CardTitle className="text-lg">Maximum Residue Limits (MRL) Status</CardTitle>
-              <p className="text-sm text-muted-foreground">Current status of chemical residues in livestock products</p>
+              <CardTitle className="text-lg">{t('mrlStatus')}</CardTitle>
+              <p className="text-sm text-muted-foreground">{t('mrlStatusDesc')}</p>
             </CardHeader>
             <CardContent className="space-y-6">
-              <MRLProgressBar label="Antibiotics" percentage={75} color="green" />
-              <MRLProgressBar label="Pesticides" percentage={45} color="green" />
-              <MRLProgressBar label="Growth Hormones" percentage={32} color="blue" />
+              <MRLProgressBar label={t('antibiotics')} percentage={75} color="green" />
+              <MRLProgressBar label={t('pesticides')} percentage={45} color="green" />
+              <MRLProgressBar label={t('growthHormones')} percentage={32} color="blue" />
             </CardContent>
           </Card>
         </div>
