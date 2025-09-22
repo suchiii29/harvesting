@@ -1,17 +1,13 @@
 import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection";
 import Dashboard from "@/components/Dashboard";
-import BenefitsSection from "@/components/BenefitsSection";
 
-const Index = () => {
+const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <HeroSection />
       <Dashboard />
-      <BenefitsSection />
     </div>
   );
 };
 
-export default Index;
+export default DashboardPage;
